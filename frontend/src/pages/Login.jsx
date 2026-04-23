@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import API from "../services/api";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import "../index.css";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -19,13 +20,20 @@ export default function Login() {
     }
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
+ return (
+  <div className="container">
+    <form onSubmit={handleSubmit} className="card">
       <h2>Login</h2>
+
       <input placeholder="Email" onChange={e => setForm({...form, email: e.target.value})} />
       <input type="password" placeholder="Password" onChange={e => setForm({...form, password: e.target.value})} />
+
       <button>Login</button>
-      <p>Don't have an account? <a href="/register">Register</a></p>
+
+      <p style={{ textAlign: "center", marginTop: "10px" }}>
+        Don't have an account? <a href="/register">Register</a>
+      </p>
     </form>
-  );
+  </div>
+);
 }

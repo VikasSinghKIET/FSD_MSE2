@@ -20,6 +20,7 @@ export default function Register() {
   };
 
   return (
+    <div className="container">
     <form onSubmit={handleSubmit}>
       <h2>Register</h2>
       <input placeholder="Name" onChange={e => setForm({...form, name: e.target.value})} />
@@ -28,5 +29,6 @@ export default function Register() {
       <button>Register</button>
       <p>Already have an account? <a href="/login">Login</a></p>
     </form>
+    </div>
   );
 }

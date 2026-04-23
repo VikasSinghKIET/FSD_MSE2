@@ -38,39 +38,54 @@ export default function Dashboard() {
   };
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <button onClick={logout}>Logout</button>
+  <div className="dashboard">
 
-      {/* Submit Form */}
+    {/* Navbar */}
+    <div className="navbar">
+      <h2>Dashboard</h2>
+      <button className="logout-btn" onClick={logout}>Logout</button>
+    </div>
+
+    {/* Form */}
+    <div className="form-box">
+      <h3>Submit Grievance</h3>
       <form onSubmit={handleSubmit}>
         <input placeholder="Title" onChange={e => setForm({...form, title: e.target.value})} />
         <input placeholder="Description" onChange={e => setForm({...form, description: e.target.value})} />
+        
         <select onChange={e => setForm({...form, category: e.target.value})}>
           <option>Academic</option>
           <option>Hostel</option>
           <option>Transport</option>
           <option>Other</option>
         </select>
+
         <button>Submit</button>
       </form>
-
-      {/* Search */}
-      <input placeholder="Search..." onChange={e => setSearch(e.target.value)} />
-      <button onClick={handleSearch}>Search</button>
-
-      {/* List */}
-      <ul>
-        {grievances.map(g => (
-          <li key={g._id}>
-            <h4>{g.title}</h4>
-            <p>{g.description}</p>
-            <p>{g.category}</p>
-            <p>Status: {g.status}</p>
-            <button onClick={() => handleDelete(g._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
     </div>
-  );
+
+    {/* Search */}
+    <div className="search-box">
+      <input placeholder="Search grievance..." onChange={e => setSearch(e.target.value)} />
+      <button onClick={handleSearch}>Search</button>
+    </div>
+
+    {/* List */}
+    {grievances.map(g => (
+      <div key={g._id} className="grievance-card">
+        <h3>{g.title}</h3>
+        <p>{g.description}</p>
+        <p>{g.category}</p>
+
+        <p className={`status ${g.status.toLowerCase()}`}>
+          {g.status}
+        </p>
+
+        <button className="delete-btn" onClick={() => handleDelete(g._id)}>
+          Delete
+        </button>
+      </div>
+    ))}
+  </div>
+);
 }
