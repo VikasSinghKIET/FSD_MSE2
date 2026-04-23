@@ -9,7 +9,9 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 
 app.use("/api", require("./routes/authRoutes"));
 app.use("/api/grievances", require("./routes/grievanceRoutes"));
