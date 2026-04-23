@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://fsd-mse2-dxfe.onrender.com/"
+  baseURL: "https://fsd-mse2-dxfe.onrender.com/api"
 });
 
 // Attach token automatically
